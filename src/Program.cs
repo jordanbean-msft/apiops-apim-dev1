@@ -17,8 +17,7 @@ var host = new HostBuilder()
                               Info = new OpenApiInfo()
                               {
                                 Version = DefaultOpenApiConfigurationOptions.GetOpenApiDocVersion(),
-                                Title = $"{DefaultOpenApiConfigurationOptions.GetOpenApiDocTitle()} (Injected)",
-                                Description = DefaultOpenApiConfigurationOptions.GetOpenApiDocDescription(),
+                                Title = "dev1-api",
                               },
                               Servers = DefaultOpenApiConfigurationOptions.GetHostNames(),
                               OpenApiVersion = OpenApiVersionType.V3,

@@ -1,2 +1,10 @@
-name: wth-logicapp
+name: apiops-apim-prod
+hooks:
+  preprovision:
+    shell: pwsh
+    continueOnError: false
+    interactive: true
+    run: |
+      $mail = $(az ad signed-in-user show --query mail -o tsv)
+      azd env set MAIL $mail
 services:

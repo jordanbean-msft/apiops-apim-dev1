@@ -45,5 +45,19 @@ module loggingDeployment 'logging.bicep' = {
   }
 }
 
+module functionDeployment 'function.bicep' = {
+  scope: az.resourceGroup(resourceGroup.name)
+  name: 'function-deployment'
+  params: {
+    appInsightsName: loggingDeployment.outputs.appInsightsName
+    appServicePlanName: names.outputs.appServicePlanName
+    functionAppName: names.outputs.functionAppName
+    location: location
+    logAnalyticsWorkspaceName: loggingDeployment.outputs.logAnalyticsWorkspaceName
+    storageAccountName: names.outputs.storageAccountName
+    tags: union(tags, { 'azd-service-name': 'func' })
+  }
+}
+
 output AZURE_LOCATION string = location
 output AZURE_TENANT_ID string = tenant().tenantId

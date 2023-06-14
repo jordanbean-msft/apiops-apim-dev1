@@ -8,3 +8,7 @@ hooks:
       $mail = $(az ad signed-in-user show --query mail -o tsv)
       azd env set MAIL $mail
 services:
+  func:
+    project: src
+    language: dotnet
+    host: function

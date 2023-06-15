@@ -1,6 +1,6 @@
 apimServiceName: apim-2ojphtwll45vu
 namedValues:
-  - name: app-insights-instrumentation-key
+  - name: 648b8901217d2011d4a337f7
     properties:
       displayName: app-insights-instrumentation-key
       value: 0f37767f-79dc-488d-b3b2-1685ae16962b

@@ -1,9 +1,0 @@
-{
-  "properties": {
-    "approvalRequired": false,
-    "description": "dev1-api-product",
-    "displayName": "dev1-api-product",
-    "state": "published",
-    "subscriptionRequired": true
-  }
-}

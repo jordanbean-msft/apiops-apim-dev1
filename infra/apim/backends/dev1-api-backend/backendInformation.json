@@ -1,0 +1,20 @@
+{
+  "properties": {
+    "credentials": {
+      "header": {
+        "x-functions-key": [
+          "{{dev1-api-function-app-key}}"
+        ]
+      },
+      "query": {}
+    },
+    "description": "dev1-api-backend",
+    "protocol": "http",
+    "resourceId": "https://management.azure.com/subscriptions/cfa014c2-6565-444f-8241-b3edd39a2a44/resourceGroups/rg-apiops-func-dev1/providers/Microsoft.Web/sites/func-b5trmbkdcmrsg-dev",
+    "tls": {
+      "validateCertificateChain": true,
+      "validateCertificateName": true
+    },
+    "url": "https://func-b5trmbkdcmrsg-dev.azurewebsites.net/api"
+  }
+}

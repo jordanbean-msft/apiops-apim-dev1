@@ -13,9 +13,7 @@
 <policies>
 	<inbound>
 		<base />
-		<set-header name="x-functions-key" exists-action="append">
-			<value>{{dev1-api-function-app-key}}</value>
-		</set-header>
+		<set-backend-service backend-id="dev1-api-backend" />
 	</inbound>
 	<backend>
 		<base />

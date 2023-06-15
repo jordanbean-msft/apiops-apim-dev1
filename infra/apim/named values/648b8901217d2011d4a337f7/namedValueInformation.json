@@ -1,0 +1,6 @@
+{
+  "properties": {
+    "displayName": "app-insights-instrumentation-key",
+    "secret": true
+  }
+}

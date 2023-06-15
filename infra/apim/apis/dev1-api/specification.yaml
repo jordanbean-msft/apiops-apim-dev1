@@ -19,9 +19,7 @@ paths:
             text/plain:
               schema:
                 type: string
-              examples:
-                default:
-                  value: 
+              example: ''
 components:
   securitySchemes:
     apiKeyHeader:

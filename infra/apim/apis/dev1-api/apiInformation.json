@@ -8,7 +8,6 @@
     "protocols": [
       "https"
     ],
-    "serviceUrl": "https://func-b5trmbkdcmrsg-dev.azurewebsites.net/api",
     "subscriptionKeyParameterNames": {
       "header": "Ocp-Apim-Subscription-Key",
       "query": "subscription-key"

@@ -1,4 +1,4 @@
-apimServiceName: rg-apiops-apim-prod
+apimServiceName: apim-apiops-ussc-prod
 namedValues:
   - name: app-insights-instrumentation-key
     properties:

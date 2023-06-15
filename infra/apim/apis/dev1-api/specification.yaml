@@ -1,0 +1,37 @@
+openapi: 3.0.1
+info:
+  title: dev1-api
+  version: '1.0'
+servers:
+  - url: https://apim-b5trmbkdcmrsg-dev.azure-api.net/dev1-api
+paths:
+  /dev1-api:
+    get:
+      tags:
+        - greeting
+      summary: Greetings
+      description: This shows a welcome message.
+      operationId: greeting
+      responses:
+        '200':
+          description: This returns the response
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                default:
+                  value: 
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      name: Ocp-Apim-Subscription-Key
+      in: header
+    apiKeyQuery:
+      type: apiKey
+      name: subscription-key
+      in: query
+security:
+  - apiKeyHeader: [ ]
+  - apiKeyQuery: [ ]

@@ -4,7 +4,7 @@ trigger:
       - main
   paths:
     exclude:
-    - tools/*
+      - tools/*
 
 parameters:
   - name: API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH
@@ -28,7 +28,7 @@ stages:
   - stage: push_changes_to_Dev_APIM
     displayName: Push changes to Dev APIM
     jobs:
-      - job: push_changes_to_Dev_APIM
+      - deployment: push_changes_to_Dev_APIM
         displayName: Push changes to Dev APIM
         pool:
           vmImage: ubuntu-latest
@@ -36,8 +36,8 @@ stages:
           - template: run-publisher-with-env.yaml
             parameters:
               API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: ${{ parameters.API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH }}
-              RESOURCE_GROUP_NAME : $(RESOURCE_GROUP_NAME)
-              API_MANAGEMENT_SERVICE_NAME : $(APIM_NAME)
+              RESOURCE_GROUP_NAME: $(RESOURCE_GROUP_NAME)
+              API_MANAGEMENT_SERVICE_NAME: $(APIM_NAME)
               ENVIRONMENT: "Dev"
               COMMIT_ID: ${{ parameters.COMMIT_ID }}
   - stage: push_changes_to_Prod_APIM
@@ -51,17 +51,16 @@ stages:
         pool:
           vmImage: ubuntu-latest
         # creates an environment if it doesn't exist
-        environment: 'Prod'
+        environment: "Prod"
         strategy:
           # default deployment strategy, more coming...
           runOnce:
             deploy:
-               steps:
-                 - template: run-publisher-with-env.yaml
-                   parameters:
-                     API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: ${{ parameters.API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH }}
-                     RESOURCE_GROUP_NAME : $(RESOURCE_GROUP_NAME_Prod)
-                     CONFIGURATION_YAML_PATH:  $(Build.SourcesDirectory)/configuration.prod.yaml
-                     ENVIRONMENT: "Prod"
-                     COMMIT_ID: ${{ parameters.COMMIT_ID }}
-              
+              steps:
+                - template: run-publisher-with-env.yaml
+                  parameters:
+                    API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: ${{ parameters.API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH }}
+                    RESOURCE_GROUP_NAME: $(RESOURCE_GROUP_NAME_Prod)
+                    CONFIGURATION_YAML_PATH: $(Build.SourcesDirectory)/configuration.prod.yaml
+                    ENVIRONMENT: "Prod"
+                    COMMIT_ID: ${{ parameters.COMMIT_ID }}

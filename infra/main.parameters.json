@@ -8,6 +8,15 @@
     "location": {
       "value": "${AZURE_LOCATION}"
     },
+    "userObjectId": {
+      "value": "${AZURE_PRINCIPAL_ID}"
+    },
+    "deploymentEnvironmentName": {
+      "value": "${DEPLOYMENT_ENVIRONMENT_NAME}"
+    },
+    "shouldDeployApim": {
+      "value": "${SHOULD_DEPLOY_APIM}"
+    },
     "publisherEmail": {
       "value": "${MAIL}"
     },

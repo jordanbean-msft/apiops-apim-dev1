@@ -1,0 +1,38 @@
+apimServiceName: apim-2ojphtwll45vu
+namedValues:
+  - name: app-insights-instrumentation-key
+    properties:
+      displayName: app-insights-instrumentation-key
+      value: e5351cc6-a767-4f00-ba5a-21202cbdfc8a
+  - name: dev1-api-function-app-key
+    properties:
+      displayName: dev1-api-function-app-key
+      keyVault:
+        identityClientId: 0d341015-d382-45b9-af5d-ef43083a9dcf
+        secretIdentifier: "https://kv-2ojphtwll45vu.vault.azure.net/secrets/function-app-key/4042e530338040089b9ead4db814aed9"
+loggers:
+  - name: apim-lab-insights
+    properties:
+      loggerType: applicationInsights
+      description: App Insights
+      resourceId: "/subscriptions/cfa014c2-6565-444f-8241-b3edd39a2a44/resourceGroups/rg-apiops-apim-dev1/providers/microsoft.insights/components/appi-2ojphtwll45vu"
+      credentials:
+        instrumentationKey: "{{app-insights-instrumentation-key}}"
+      isBuffered: true
+diagnostics:
+  - name: applicationinsights
+    properties:
+      verbosity: Error
+      loggerId: "/subscriptions/cfa014c2-6565-444f-8241-b3edd39a2a44/resourceGroups/rg-apiops-apim-dev1/providers/Microsoft.ApiManagement/service/apim-2ojphtwll45vu/loggers/apim-lab-insights"
+backends:
+  - name: dev1-api-backend
+    properties:
+      url: "https://func-2ojphtwll45vu.azurewebsites.net/api"
+      resourceid: "https://management.azure.com/subscriptions/cfa014c2-6565-444f-8241-b3edd39a2a44/resourceGroups/rg-apiops-apim-dev1/providers/Microsoft.Web/sites/func-2ojphtwll45vu"
+apis:
+  - name: dev1-api
+    diagnostics:
+      - name: applicationinsights
+        properties:
+          verbosity: Error
+          loggerId: "/subscriptions/cfa014c2-6565-444f-8241-b3edd39a2a44/resourceGroups/rg-apiops-apim-dev1/providers/microsoft.insights/components/appi-2ojphtwll45vu"

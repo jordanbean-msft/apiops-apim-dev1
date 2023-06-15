@@ -23,14 +23,14 @@ namespace src
     [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "text/plain", bodyType: typeof(string), Summary = "The response", Description = "This returns the response")]
 
     [Function("dev1-api")]
-    public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req)
+    public HttpResponseData Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequestData req)
     {
       _logger.LogInformation("C# HTTP trigger function processed a request.");
 
       var response = req.CreateResponse(HttpStatusCode.OK);
       response.Headers.Add("Content-Type", "text/plain; charset=utf-8");
 
-      response.WriteString("dev1-api");
+      response.WriteString($"dev1-api: {System.Environment.GetEnvironmentVariable("ENVIRONMENT_NAME")}");
 
       return response;
     }

@@ -5,6 +5,7 @@ param appInsightsName string
 param logAnalyticsWorkspaceName string
 param location string
 param tags object
+param deploymentEnvironmentName string
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2021-01-15' = {
   name: appServicePlanName
@@ -67,6 +68,10 @@ resource functionApp 'Microsoft.Web/sites@2022-09-01' = {
         {
           name: 'FUNCTIONS_WORKER_RUNTIME'
           value: 'dotnet-isolated'
+        }
+        {
+          name: 'ENVIRONMENT_NAME'
+          value: deploymentEnvironmentName
         }
       ]
     }

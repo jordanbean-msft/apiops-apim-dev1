@@ -1,4 +1,4 @@
-name: apiops-apim-prod
+name: apiops-apim
 hooks:
   preprovision:
     shell: pwsh
@@ -7,6 +7,13 @@ hooks:
     run: |
       $mail = $(az ad signed-in-user show --query mail -o tsv)
       azd env set MAIL $mail
+  postdeploy:
+    shell: pwsh
+    continueOnError: false
+    interactive: true
+    run: |
+      $KEY_VAULT_SECRET = $(az functionapp function keys list -g $env:RESOURCE_GROUP_NAME -n $env:FUNCTION_APP_NAME --function-name dev1-api --query default --output tsv)
+      az keyvault secret set --name function-app-key --vault-name $env:KEY_VAULT_NAME --value $KEY_VAULT_SECRET
 services:
   func:
     project: src

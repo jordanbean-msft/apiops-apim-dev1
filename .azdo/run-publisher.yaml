@@ -32,14 +32,20 @@ stages:
         displayName: Push changes to Dev APIM
         pool:
           vmImage: ubuntu-latest
-        steps:
-          - template: run-publisher-with-env.yaml
-            parameters:
-              API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: ${{ parameters.API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH }}
-              RESOURCE_GROUP_NAME: $(RESOURCE_GROUP_NAME)
-              API_MANAGEMENT_SERVICE_NAME: $(APIM_NAME)
-              ENVIRONMENT: "Dev"
-              COMMIT_ID: ${{ parameters.COMMIT_ID }}
+        # creates an environment if it doesn't exist
+        environment: "Prod"
+        strategy:
+          # default deployment strategy, more coming...
+          runOnce:
+            deploy:
+              steps:
+                - template: run-publisher-with-env.yaml
+                  parameters:
+                    API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH: ${{ parameters.API_MANAGEMENT_SERVICE_OUTPUT_FOLDER_PATH }}
+                    RESOURCE_GROUP_NAME: $(RESOURCE_GROUP_NAME)
+                    API_MANAGEMENT_SERVICE_NAME: $(APIM_NAME)
+                    ENVIRONMENT: "Dev"
+                    COMMIT_ID: ${{ parameters.COMMIT_ID }}
   - stage: push_changes_to_Prod_APIM
     displayName: Push changes to Prod APIM
     jobs:

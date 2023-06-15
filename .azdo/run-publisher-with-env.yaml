@@ -28,7 +28,13 @@ steps:
 
   - checkout: self
     fetchDepth: 0
-
+  - script: |
+      env | sort
+    displayName: Print environment variables
+  - script: |
+      sudo apt-get install -qq -y tree
+      tree
+    displayName: Print directory tree
   - task: AzureCLI@2
     displayName: Set publishing variables
     inputs:

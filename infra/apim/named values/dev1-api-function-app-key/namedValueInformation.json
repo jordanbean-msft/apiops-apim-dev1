@@ -1,0 +1,11 @@
+{
+  "properties": {
+    "displayName": "dev1-api-function-app-key",
+    "keyVault": {
+      "identityClientId": "ee85c9ff-deca-4441-981f-803bf5544c11",
+      "secretIdentifier": "https://kv-b5trmbkdcmrsg-dev.vault.azure.net/secrets/function-app-key"
+    },
+    "secret": true,
+    "tags": []
+  }
+}

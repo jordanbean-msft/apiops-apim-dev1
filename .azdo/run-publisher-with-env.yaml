@@ -127,4 +127,4 @@ steps:
         COMMIT_ID: $(Build.SourceVersion)
       ${{ if ne( parameters['CONFIGURATION_YAML_PATH'], '' ) }}:
         CONFIGURATION_YAML_PATH: ${{ parameters.CONFIGURATION_YAML_PATH }}
-      Logging__LogLevel__Default: Debug
+      Logging__LogLevel__Default: Trace

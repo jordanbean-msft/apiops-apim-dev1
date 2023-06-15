@@ -1,6 +1,6 @@
 apimServiceName: apim-apiops-ussc-prod
 namedValues:
-  - name: app-insights-instrumentation-key
+  - name: 648b8901217d2011d4a337f7
     properties:
       displayName: app-insights-instrumentation-key
       value: 40688af1-5cb4-471c-b465-d9b4307b18fd

@@ -1,21 +1,21 @@
-apimServiceName: apim-m5qqnv7lfsmmu
+apimServiceName: rg-apiops-apim-prod
 namedValues:
   - name: app-insights-instrumentation-key
     properties:
       displayName: app-insights-instrumentation-key
-      value: e5351cc6-a767-4f00-ba5a-21202cbdfc8a
+      value: 40688af1-5cb4-471c-b465-d9b4307b18fd
   - name: dev1-api-function-app-key
     properties:
       displayName: dev1-api-function-app-key
       keyVault:
-        identityClientId: 0d341015-d382-45b9-af5d-ef43083a9dcf
-        secretIdentifier: "https://kv-2ojphtwll45vu.vault.azure.net/secrets/function-app-key/4042e530338040089b9ead4db814aed9"
+        identityClientId: ba0c378d-f7b2-44e5-9e75-46a527e4b7ff
+        secretIdentifier: "https://kv-pzc3njusxmg5i-prod.vault.azure.net/secrets/function-app-key/478ee1457eea4b3f9a8b1dc88bf8d630"
 loggers:
   - name: apim-lab-insights
     properties:
       loggerType: applicationInsights
       description: App Insights
-      resourceId: "/subscriptions/cfa014c2-6565-444f-8241-b3edd39a2a44/resourceGroups/rg-apiops-apim-dev1/providers/microsoft.insights/components/appi-2ojphtwll45vu"
+      resourceId: "/subscriptions/cfa014c2-6565-444f-8241-b3edd39a2a44/resourceGroups/rg-apiops-func-prod/providers/microsoft.insights/components/appi-pzc3njusxmg5i-prod"
       credentials:
         instrumentationKey: "{{app-insights-instrumentation-key}}"
       isBuffered: true
@@ -23,16 +23,16 @@ diagnostics:
   - name: applicationinsights
     properties:
       verbosity: Error
-      loggerId: "/subscriptions/cfa014c2-6565-444f-8241-b3edd39a2a44/resourceGroups/rg-apim-lab-prod/providers/Microsoft.ApiManagement/service/apim-prod-wk-05102022/loggers/apim-lab-prod-insights"
+      loggerId: "/subscriptions/cfa014c2-6565-444f-8241-b3edd39a2a44/resourceGroups/rg-apiops-apim-prod/providers/Microsoft.ApiManagement/service/apim-apiops-ussc-prod/loggers/apim-lab-prod-insights"
 backends:
   - name: dev1-api-backend
     properties:
-      url: "https://func-2ojphtwll45vu.azurewebsites.net/api"
-      resourceid: "https://management.azure.com/subscriptions/cfa014c2-6565-444f-8241-b3edd39a2a44/resourceGroups/rg-apiops-apim-dev1/providers/Microsoft.Web/sites/func-2ojphtwll45vu"
+      url: "https://func-pzc3njusxmg5i-prod.azurewebsites.net"
+      resourceid: "https://management.azure.com/subscriptions/cfa014c2-6565-444f-8241-b3edd39a2a44/resourceGroups/rg-apiops-func-prod/providers/Microsoft.Web/sites/func-pzc3njusxmg5i-prod"
 apis:
   - name: dev1-api
     diagnostics:
       - name: applicationinsights
         properties:
           verbosity: Error
-          loggerId: "/subscriptions/cfa014c2-6565-444f-8241-b3edd39a2a44/resourceGroups/rg-apiops-apim-dev1/providers/microsoft.insights/components/appi-2ojphtwll45vu"
+          loggerId: "/subscriptions/cfa014c2-6565-444f-8241-b3edd39a2a44/resourceGroups/rg-apiops-func-prod/providers/microsoft.insights/components/appi-pzc3njusxmg5i-prod"
